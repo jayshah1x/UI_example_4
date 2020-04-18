@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/ic_background" >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_logo"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/log_in"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="LOG IN"
+        android:textSize="32dp"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="40dp"
+        android:textColor="#FEF7E4"
+        android:layout_centerHorizontal="true"></TextView>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/log_in"
+        android:layout_marginTop="50dp"
+        android:text="                      Username"
+        android:textColor="#FEF7E4"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/username"
+        android:text="                      Password"
+        android:textColor="#FEF7E4"
+        android:layout_marginTop="30dp"></EditText>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Password"
+        android:layout_below="@+id/password"
+        android:layout_marginLeft="55dp"
+        android:layout_centerHorizontal="false"
+        android:textColor="#233849"
+        ></RadioButton>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="80dp"
+        android:text="GO"
+        android:textColor="#233849"
+        android:background="@drawable/custom_button"
+        ></Button>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="50dp"
+        android:background="#FEF7E4"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp"
+        android:text="Don't have account? Register"
+        android:textColor="#233849"></Button>
+</RelativeLayout>
