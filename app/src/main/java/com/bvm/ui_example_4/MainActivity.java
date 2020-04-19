@@ -3,6 +3,7 @@ package com.bvm.ui_example_4;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private static Button Login_btn, Register_btn;
     private static String username, password1, password;
     private static CheckBox remember;
+    public static  final String PREFS_NAME = "PrefsFile";
+    SharedPreferences sharedPreferences;
+    SharedPreferences mypref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,47 +44,39 @@ public class MainActivity extends AppCompatActivity {
         Login_btn = findViewById(R.id.login);
        // Temp = findViewById(R.id.password1);
         Register_btn = findViewById(R.id.register);
-        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-        String checkbox = preferences.getString("remember", "");
-        if(checkbox.equals("true")){
-            Intent intent = new Intent(MainActivity.this,Second.class);
-        }
-        else if(checkbox.equals("false")){
-            Toast.makeText(MainActivity.this, "Please Sign In", Toast.LENGTH_SHORT).show();
-        }
-        checkElement();
         remember = findViewById(R.id.remember);
-        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isChecked()){
-                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor editor =  preferences.edit();
-                    editor.putString("remember", "true");
-                    editor.apply();
-                    Toast.makeText(MainActivity.this, "Checked", Toast.LENGTH_SHORT).show();
 
-                }else if(!buttonView.isChecked()){
-                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-                    SharedPreferences.Editor editor =  preferences.edit();
-                    editor.putString("remember", "false");
-                    editor.apply();
-                    Toast.makeText(MainActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
+        checkElement();
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-                }
-            }
-        });
 
         Login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "Found that", Toast.LENGTH_SHORT).show();
                 validate();
             }
         });
 
+        getDetails();
 
 
+
+    }
+
+    private void getDetails() {
+
+        if(sharedPreferences.contains("user_p")){
+            String user = sharedPreferences.getString("user_p", "not found");
+            Username.setText(user);
+        }
+        if(sharedPreferences.contains("password_p")){
+            String pass = sharedPreferences.getString("password_p", "not found");
+            Password.setText(pass);
+        }
+        if(sharedPreferences.contains("check_p")){
+            Boolean b = sharedPreferences.getBoolean("check_p",false);
+            remember.setChecked(b);
+        }
     }
 
     private void validate() {
@@ -103,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
                     password = snapshot.child(username).child("pass").getValue().toString();
                     password1 = Password.getText().toString();
                     if(password.equals(password1)){
+                        if(remember.isChecked()){
+                            Boolean check = remember.isChecked();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("user_p", Username.getText().toString());
+                            editor.putString("password_p", Password.getText().toString());
+                            editor.putBoolean("check_p", check);
+                            editor.apply();
+                        }
+                        else{
+                            sharedPreferences.edit().clear().apply();
+                        }
                         Intent intent = new Intent(MainActivity.this, Second.class);
                         startActivity(intent);
                 }
