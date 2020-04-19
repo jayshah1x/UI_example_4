@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="Remember Password  |"
         android:layout_below="@+id/password"
-        android:layout_marginLeft="55dp"
+        android:layout_marginLeft="45dp"
         android:layout_centerHorizontal="false"
         android:textColor="#FEF7E4"
         android:buttonTint="@color/yellow"
@@ -66,13 +66,16 @@
 
     <Switch
         android:id="@+id/Switch"
+        android:theme="@style/SwitchTheme"
         android:layout_width="50dp"
         android:layout_height="10dp"
         android:layout_below="@id/password"
         android:layout_toRightOf="@id/remember"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="3dp"
+        android:checked="false"
         android:textColor="#FEF7E4"
+        android:backgroundTint="@color/yellow"
         ></Switch>
     <TextView
         android:layout_width="wrap_content"
