@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_logo"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         />
     <TextView
@@ -30,11 +30,13 @@
         android:id="@+id/username"
         android:layout_centerHorizontal="true"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/log_in"
         android:layout_marginTop="50dp"
         android:text="                      Username"
         android:textColor="#FEF7E4"
+        android:backgroundTint="@color/yellow"
+
         ></EditText>
 
     <EditText
@@ -46,26 +48,49 @@
         android:text="                      Password"
         android:inputType="textPassword"
         android:textColor="#FEF7E4"
-        android:layout_marginTop="30dp"></EditText>
+        android:layout_marginTop="0dp"
+        android:backgroundTint="@color/yellow"
+        ></EditText>
 
     <CheckBox
         android:id="@+id/remember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember Password"
+        android:text="Remember Password  |"
         android:layout_below="@+id/password"
         android:layout_marginLeft="55dp"
         android:layout_centerHorizontal="false"
-        android:textColor="#233849"
+        android:textColor="#FEF7E4"
+        android:buttonTint="@color/yellow"
         ></CheckBox>
+
+    <Switch
+        android:id="@+id/Switch"
+        android:layout_width="50dp"
+        android:layout_height="10dp"
+        android:layout_below="@id/password"
+        android:layout_toRightOf="@id/remember"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:textColor="#FEF7E4"
+        ></Switch>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/Switch"
+        android:layout_below="@id/password"
+        android:text="Administrator"
+        android:textSize="15dp"
+        android:textColor="#FEF7E4"
+        android:layout_marginTop="6dp"></TextView>
 
     <Button
         android:id="@+id/login"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/password"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="150dp"
         android:text="GO"
         android:textColor="#233849"
         android:background="@drawable/custom_button"
